@@ -12,54 +12,87 @@
     body {
       margin: 0;
       font-family: 'Roboto', sans-serif;
-      background: #fefbf6;
+      background: #fff;
+      color: #333;
     }
     nav {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 1.5rem 3rem;
-      background: #fff;
+      padding: 1.2rem 2.5rem;
+      background-color: #fff;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+      position: sticky;
+      top: 0;
+      z-index: 999;
+    }
+    .logo {
       font-family: 'Playfair Display', serif;
-      font-size: 1rem;
+      font-size: 1.8rem;
+      font-weight: bold;
     }
     nav ul {
       list-style: none;
       display: flex;
-      gap: 1.5rem;
-      margin: 0;
+      gap: 2rem;
       padding: 0;
+      margin: 0;
     }
     nav ul li a {
       text-decoration: none;
-      color: #222;
-    }
-    .logo {
-      font-size: 1.6rem;
-      font-weight: bold;
-      color: #222;
+      color: #333;
+      font-weight: 500;
     }
     .hero {
       position: relative;
-      width: 100%;
-      height: 450px;
-      background: url('images/hero-illustration.png') no-repeat center/cover;
-    }
-    .welcome-section {
+      height: 80vh;
+      background: url('images/hero-banner.png') center/cover no-repeat;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
       text-align: center;
-      padding: 3rem 2rem;
     }
-    .welcome-section h1 {
+    .hero h1 {
       font-family: 'Playfair Display', serif;
-      font-size: 2.5rem;
-      margin-bottom: 1rem;
-      color: #222;
+      font-size: 3rem;
+      background: rgba(0, 0, 0, 0.5);
+      padding: 1rem 2rem;
+      border-radius: 8px;
     }
-    .welcome-section p {
-      font-size: 1.1rem;
-      color: #444;
-      max-width: 800px;
-      margin: 0 auto;
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2.5rem;
+      padding: 3rem 4rem;
+    }
+    .card {
+      background: #fafafa;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+      transition: transform 0.3s ease;
+    }
+    .card:hover {
+      transform: translateY(-6px);
+    }
+    .card img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+    }
+    .card-content {
+      padding: 1.2rem;
+    }
+    .card-content h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+    }
+    .card-content p {
+      font-size: 1rem;
+      color: #555;
+      line-height: 1.5;
     }
   </style>
 </head>
@@ -76,11 +109,53 @@
     </ul>
   </nav>
 
-  <section class="hero"><img src="images/hero-banner.png" alt="Hero banner for TME – Travel Made Easy" /></section>
-
-  <section class="welcome-section">
-    <h1>Welcome to TME</h1>
-    <p>Explore Europe like never before. Whether you're drawn to the timeless charm of Rome, the modern edge of Milan, or the romantic streets of Paris, TME brings you guides to Europe's most beloved cities.</p>
+  <section class="hero">
+    <h1>Travel Made Easy</h1>
   </section>
+
+  <div class="grid">
+    <div class="card">
+      <img src="images/barcelona.png" alt="Barcelona" />
+      <div class="card-content">
+        <h2>Barcelona</h2>
+        <p>Explore the stunning architecture of Antoni Gaudí, from the Sagrada Familia to Park Güell.</p>
+      </div>
+    </div>
+    <div class="card">
+      <img src="images/athens.png" alt="Athens" />
+      <div class="card-content">
+        <h2>Athens</h2>
+        <p>Walk among the ruins of ancient Greece and soak up views from the Acropolis to the sea.</p>
+      </div>
+    </div>
+    <div class="card">
+      <img src="images/rome.png" alt="Rome" />
+      <div class="card-content">
+        <h2>Rome</h2>
+        <p>Feel history come alive as you tour the Colosseum, Vatican City, and Rome’s cobbled alleys.</p>
+      </div>
+    </div>
+    <div class="card">
+      <img src="images/florence.png" alt="Florence" />
+      <div class="card-content">
+        <h2>Florence</h2>
+        <p>Admire Renaissance art and architecture, from the Uffizi to the iconic Duomo cathedral.</p>
+      </div>
+    </div>
+    <div class="card">
+      <img src="images/milan.png" alt="Milan" />
+      <div class="card-content">
+        <h2>Milan</h2>
+        <p>Shop fashion, tour the Last Supper, and admire gothic spires at the Milan Cathedral.</p>
+      </div>
+    </div>
+    <div class="card">
+      <img src="images/london.png" alt="London" />
+      <div class="card-content">
+        <h2>London</h2>
+        <p>From the London Eye to Buckingham Palace, dive into England’s capital of culture.</p>
+      </div>
+    </div>
+  </div>
 </body>
 </html>
