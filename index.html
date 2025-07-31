@@ -1,49 +1,86 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>TME – Travel Made Easy</title>
-    <link rel="stylesheet" href="css/style.css" />
-  </head>
-  <body>
-    <nav>
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="barcelona.html">Barcelona</a></li>
-        <li><a href="athens.html">Athens</a></li>
-        <li><a href="rome.html">Rome</a></li>
-        <li><a href="florence.html">Florence</a></li>
-        <li><a href="milan.html">Milan</a></li>
-        <li><a href="london.html">London</a></li>
-      </ul>
-    </nav>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TME – Travel Made Easy</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Roboto', sans-serif;
+      background: #fefbf6;
+    }
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.5rem 3rem;
+      background: #fff;
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 1.5rem;
+      margin: 0;
+      padding: 0;
+    }
+    nav ul li a {
+      text-decoration: none;
+      color: #222;
+    }
+    .logo {
+      font-size: 1.6rem;
+      font-weight: bold;
+      color: #222;
+    }
+    .hero {
+      position: relative;
+      width: 100%;
+      height: 450px;
+      background: url('images/hero-illustration.png') no-repeat center/cover;
+    }
+    .welcome-section {
+      text-align: center;
+      padding: 3rem 2rem;
+    }
+    .welcome-section h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      color: #222;
+    }
+    .welcome-section p {
+      font-size: 1.1rem;
+      color: #444;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="logo">TME</div>
+    <ul>
+      <li><a href="barcelona.html">Barcelona</a></li>
+      <li><a href="athens.html">Athens</a></li>
+      <li><a href="rome.html">Rome</a></li>
+      <li><a href="florence.html">Florence</a></li>
+      <li><a href="milan.html">Milan</a></li>
+      <li><a href="london.html">London</a></li>
+    </ul>
+  </nav>
 
-    <section class="hero">
-      <img src="images/home.png" alt="Abstract travel illustration" />
-      <div class="overlay"></div>
-      <h1>Travel Made Easy</h1>
-    </section>
+  <section class="hero"><img src="images/hero-banner.png" alt="Hero banner for TME – Travel Made Easy" /></section>
 
-    <main class="container">
-      <h2>Welcome to TME – Travel Made Easy</h2>
-      <p>
-        Whether you’re planning your first European adventure or looking to rediscover
-        familiar places, TME provides curated insights for some of the continent’s
-        most beloved destinations. Our guides help you uncover the must‑see
-        attractions, cultural landmarks and local experiences that make each city
-        unforgettable.
-      </p>
-      <p>
-        Select a city from the navigation menu to start exploring Barcelona, Athens,
-        Rome, Florence, Milan and London. Each page highlights essential
-        sights, unique architectural masterpieces, culinary traditions and
-        practical travel tips so you can make the most of your journey.
-      </p>
-    </main>
-
-    <footer>
-      <p>© 2025 TME – Travel Made Easy. All rights reserved.</p>
-    </footer>
-  </body>
+  <section class="welcome-section">
+    <h1>Welcome to TME</h1>
+    <p>Explore Europe like never before. Whether you're drawn to the timeless charm of Rome, the modern edge of Milan, or the romantic streets of Paris, TME brings you guides to Europe's most beloved cities.</p>
+  </section>
+</body>
 </html>
