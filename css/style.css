@@ -1,0 +1,109 @@
+/* Travel Made Easy - Global styles */
+
+/* Reset margin and padding for all elements */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  background-color: #f8f8f8;
+  color: #333;
+}
+
+nav {
+  background-color: #333;
+  color: #fff;
+  padding: 1rem 0;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+nav ul li {
+  margin: 0 15px;
+}
+
+nav ul li a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.2s ease-in-out;
+}
+
+nav ul li a:hover {
+  color: #ddd;
+}
+
+.hero {
+  position: relative;
+  width: 100%;
+  height: 60vh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  text-align: center;
+}
+
+.hero img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+}
+
+.hero .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 0;
+}
+
+.hero h1 {
+  font-size: 2.5rem;
+  z-index: 1;
+  padding: 0 20px;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6);
+  color: #ffffff;
+}
+
+.container {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 0 20px 40px 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+h1, h2 {
+  color: #333;
+  margin-bottom: 20px;
+}
+
+p {
+  margin-bottom: 15px;
+}
+
+footer {
+  text-align: center;
+  padding: 20px 0;
+  background-color: #333;
+  color: #fff;
+  margin-top: 40px;
+}
