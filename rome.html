@@ -1,69 +1,140 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>TME – Rome</title>
-    <link rel="stylesheet" href="css/style.css" />
-  </head>
-  <body>
-    <nav>
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="barcelona.html">Barcelona</a></li>
-        <li><a href="athens.html">Athens</a></li>
-        <li><a href="rome.html">Rome</a></li>
-        <li><a href="florence.html">Florence</a></li>
-        <li><a href="milan.html">Milan</a></li>
-        <li><a href="london.html">London</a></li>
-      </ul>
-    </nav>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TME – Rome</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Roboto', sans-serif;
+      background: #fff;
+      color: #333;
+    }
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.2rem 2.5rem;
+      background-color: #fff;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    }
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      font-weight: bold;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 2rem;
+      padding: 0;
+      margin: 0;
+    }
+    nav ul li a {
+      text-decoration: none;
+      color: #333;
+      font-weight: 500;
+    }
+    .hero {
+      position: relative;
+      height: 70vh;
+      background: url('images/hero-map.png') center/cover no-repeat;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .pin {
+      position: absolute;
+      width: 16px;
+      height: 16px;
+      background: red;
+      border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
+    .pin.rome { top: 60%; left: 44%; }
+    @keyframes pulse {
+      0% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.5); opacity: 0.5; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 3rem;
+      background: rgba(0, 0, 0, 0.5);
+      color: white;
+      padding: 1rem 2rem;
+      border-radius: 8px;
+      position: relative;
+      z-index: 2;
+    }
+    main {
+      max-width: 800px;
+      margin: 3rem auto;
+      padding: 0 2rem;
+    }
+    h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      margin-top: 2rem;
+      color: #222;
+    }
+    p {
+      font-size: 1.05rem;
+      line-height: 1.7;
+      color: #444;
+    }
+    footer {
+      text-align: center;
+      padding: 2rem 0;
+      background: #fafafa;
+      font-size: 0.9rem;
+      color: #777;
+      margin-top: 4rem;
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="logo">TME</div>
+    <ul>
+      <li><a href="barcelona.html">Barcelona</a></li>
+      <li><a href="athens.html">Athens</a></li>
+      <li><a href="rome.html">Rome</a></li>
+      <li><a href="florence.html">Florence</a></li>
+      <li><a href="milan.html">Milan</a></li>
+      <li><a href="london.html">London</a></li>
+    </ul>
+  </nav>
 
-    <section class="hero">
-      <img src="images/rome.png" alt="Abstract Rome illustration" />
-      <div class="overlay"></div>
-      <h1>Rome</h1>
-    </section>
+  <section class="hero">
+    <h1>Rome</h1>
+    <div class="pin rome"></div>
+  </section>
 
-    <main class="container">
-      <h2>Echoes of an Empire</h2>
-      <p>
-        Rome’s most iconic monument, the <strong>Colosseum</strong>, was built
-        between 70 and 80 AD and could seat up to 50,000 spectators for
-        gladiatorial contests and animal hunts. Nearby,
-        the <strong>Palatine Hill</strong> preserves ruins of imperial palaces on
-        the very site where legend says Romulus founded the city.
-      </p>
+  <main>
+    <h2>Historic Highlights</h2>
+    <p>
+      The Colosseum, a colossal amphitheater built in 80 AD, stands as a symbol of ancient Rome’s architectural prowess. Once hosting gladiator battles, it now welcomes millions of tourists each year.
+    </p>
 
-      <h2>Sacred Spaces</h2>
-      <p>
-        Across the Tiber, <strong>St Peter’s Basilica</strong> anchors the
-        Vatican. It houses Michelangelo’s delicate <em>Pietà</em> and remains the
-        spiritual heart of the Catholic Church.
-        In the centre of Rome, the <strong>Pantheon</strong> boasts perfect
-        symmetry: its domed temple built in 126 AD has inspired architects for
-        millennia.
-      </p>
+    <h2>Religious Significance</h2>
+    <p>
+      Vatican City, the world's smallest independent state, houses the Pope and iconic sites like St. Peter’s Basilica and the Sistine Chapel, home to Michelangelo’s frescoes.
+    </p>
 
-      <h2>Palaces, Galleries & Tombs</h2>
-      <p>
-        The Baroque <strong>Palazzo Barberini</strong> welcomes visitors with
-        opulent staircases, fountains and an art gallery featuring masters of
-        the 17th century. Beneath the city, the
-        labyrinthine <strong>Catacombs</strong> stretch for hundreds of
-        kilometres, preserving frescoed burial chambers carved by early
-        Christians.
-      </p>
-      <p>
-        The imposing white <strong>Altare della Patria</strong>, built after
-        Italy’s unification, symbolizes national unity and hosts official
-        ceremonies. Its rooftop terraces offer
-        sweeping views over Rome’s historic centre.
-      </p>
-    </main>
+    <h2>Everyday Wonders</h2>
+    <p>
+      Rome's cobbled streets reveal charming piazzas, fountains like the Trevi Fountain, and trattorias serving carbonara, espresso, and gelato that reflect the city’s soul.
+    </p>
+  </main>
 
-    <footer>
-      <p>© 2025 TME – Travel Made Easy. All rights reserved.</p>
-    </footer>
-  </body>
+  <footer>
+    <p>© 2025 TME – Travel Made Easy. All rights reserved.</p>
+  </footer>
+</body>
 </html>

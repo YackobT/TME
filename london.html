@@ -1,67 +1,140 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>TME – London</title>
-    <link rel="stylesheet" href="css/style.css" />
-  </head>
-  <body>
-    <nav>
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="barcelona.html">Barcelona</a></li>
-        <li><a href="athens.html">Athens</a></li>
-        <li><a href="rome.html">Rome</a></li>
-        <li><a href="florence.html">Florence</a></li>
-        <li><a href="milan.html">Milan</a></li>
-        <li><a href="london.html">London</a></li>
-      </ul>
-    </nav>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TME – London</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Roboto', sans-serif;
+      background: #fff;
+      color: #333;
+    }
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.2rem 2.5rem;
+      background-color: #fff;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    }
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      font-weight: bold;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 2rem;
+      padding: 0;
+      margin: 0;
+    }
+    nav ul li a {
+      text-decoration: none;
+      color: #333;
+      font-weight: 500;
+    }
+    .hero {
+      position: relative;
+      height: 70vh;
+      background: url('images/hero-map.png') center/cover no-repeat;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .pin {
+      position: absolute;
+      width: 16px;
+      height: 16px;
+      background: red;
+      border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
+    .pin.london { top: 45%; left: 30%; }
+    @keyframes pulse {
+      0% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.5); opacity: 0.5; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 3rem;
+      background: rgba(0, 0, 0, 0.5);
+      color: white;
+      padding: 1rem 2rem;
+      border-radius: 8px;
+      position: relative;
+      z-index: 2;
+    }
+    main {
+      max-width: 800px;
+      margin: 3rem auto;
+      padding: 0 2rem;
+    }
+    h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      margin-top: 2rem;
+      color: #222;
+    }
+    p {
+      font-size: 1.05rem;
+      line-height: 1.7;
+      color: #444;
+    }
+    footer {
+      text-align: center;
+      padding: 2rem 0;
+      background: #fafafa;
+      font-size: 0.9rem;
+      color: #777;
+      margin-top: 4rem;
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="logo">TME</div>
+    <ul>
+      <li><a href="barcelona.html">Barcelona</a></li>
+      <li><a href="athens.html">Athens</a></li>
+      <li><a href="rome.html">Rome</a></li>
+      <li><a href="florence.html">Florence</a></li>
+      <li><a href="milan.html">Milan</a></li>
+      <li><a href="london.html">London</a></li>
+    </ul>
+  </nav>
 
-    <section class="hero">
-      <img src="images/london.png" alt="Abstract London illustration" />
-      <div class="overlay"></div>
-      <h1>London</h1>
-    </section>
+  <section class="hero">
+    <h1>London</h1>
+    <div class="pin london"></div>
+  </section>
 
-    <main class="container">
-      <h2>Modern Views</h2>
-      <p>
-        The <strong>London Eye</strong> rises 135 metres above the River Thames,
-        providing panoramic views of the city’s landmarks—including Big Ben, the
-        Houses of Parliament, Buckingham Palace, The Shard and St Paul’s
-        Cathedral. Each capsule on the wheel represents a London borough.
-      </p>
+  <main>
+    <h2>Historic and Modern</h2>
+    <p>
+      Discover the Tower of London, Westminster Abbey, and Buckingham Palace alongside sleek skyscrapers like The Shard and vibrant modern art at the Tate.
+    </p>
 
-      <h2>Towers & Fortresses</h2>
-      <p>
-        On the north bank stands the <strong>Tower of London</strong>, a former
-        royal residence, prison and treasury now housing the Crown Jewels and
-        exhibitions on a thousand years of history.
-        Downriver, the <strong>Tower Bridge</strong>—a late‑Victorian bascule and
-        suspension bridge—was built between 1886 and 1894 with twin towers 61 metres
-        tall. Visitors can walk its glass‑floored high level walkways and view the
-        original steam engine rooms.
-      </p>
+    <h2>Iconic Experiences</h2>
+    <p>
+      Ride the London Eye, enjoy afternoon tea, or stroll through Hyde Park. London's neighborhoods offer culture at every turn, from Camden Market to Notting Hill.
+    </p>
 
-      <h2>Palaces & Cathedrals</h2>
-      <p>
-        The grand <strong>Buckingham Palace</strong> began life as the Duke of
-        Buckingham’s townhouse in 1703. It has served as the London residence of
-        the British monarch since 1837 and contains 775 rooms; parts of the palace
-        open to visitors each summer.
-      </p>
-      <p>
-        Designed by Sir Christopher Wren after the Great Fire of 1666,
-        <strong>St Paul’s Cathedral</strong> features a majestic limestone façade and
-        a dome rising 365 feet. The 300‑year‑old cathedral stands as a monument to
-        resilience and architectural ingenuity.
-      </p>
-    </main>
+    <h2>Global Flavors</h2>
+    <p>
+      From traditional British fare to world-class international cuisine, London’s food scene reflects its status as a global melting pot.
+    </p>
+  </main>
 
-    <footer>
-      <p>© 2025 TME – Travel Made Easy. All rights reserved.</p>
-    </footer>
-  </body>
+  <footer>
+    <p>© 2025 TME – Travel Made Easy. All rights reserved.</p>
+  </footer>
+</body>
 </html>
