@@ -3,11 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>TME – London</title>
+  <title>London – TME</title>
   <link rel="stylesheet" href="css/style.css" />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
   <style>
     body {
       margin: 0;
@@ -20,7 +18,7 @@
       justify-content: space-between;
       align-items: center;
       padding: 1.2rem 2.5rem;
-      background-color: #fff;
+      background: #fff;
       box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
     }
     .logo {
@@ -40,61 +38,24 @@
       color: #333;
       font-weight: 500;
     }
-    .hero {
-      position: relative;
-      height: 70vh;
-      background: url('images/hero-map.png') center/cover no-repeat;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .pin {
-      position: absolute;
-      width: 16px;
-      height: 16px;
-      background: red;
-      border-radius: 50%;
-      animation: pulse 2s infinite;
-    }
-    .pin.london { top: 45%; left: 30%; }
-    @keyframes pulse {
-      0% { transform: scale(1); opacity: 1; }
-      50% { transform: scale(1.5); opacity: 0.5; }
-      100% { transform: scale(1); opacity: 1; }
-    }
-    .hero h1 {
+    h1 {
       font-family: 'Playfair Display', serif;
-      font-size: 3rem;
-      background: rgba(0, 0, 0, 0.5);
-      color: white;
-      padding: 1rem 2rem;
-      border-radius: 8px;
-      position: relative;
-      z-index: 2;
-    }
-    main {
-      max-width: 800px;
-      margin: 3rem auto;
-      padding: 0 2rem;
-    }
-    h2 {
-      font-family: 'Playfair Display', serif;
-      font-size: 2rem;
-      margin-top: 2rem;
-      color: #222;
-    }
-    p {
-      font-size: 1.05rem;
-      line-height: 1.7;
-      color: #444;
-    }
-    footer {
       text-align: center;
-      padding: 2rem 0;
-      background: #fafafa;
-      font-size: 0.9rem;
-      color: #777;
-      margin-top: 4rem;
+      margin: 2rem 0;
+      font-size: 2.5rem;
+    }
+    #map {
+      height: 450px;
+      width: 90%;
+      margin: 0 auto 2rem;
+      border-radius: 12px;
+    }
+    .content {
+      width: 80%;
+      margin: auto;
+      padding-bottom: 2rem;
+      line-height: 1.6;
+      font-size: 1.1rem;
     }
   </style>
 </head>
@@ -102,6 +63,7 @@
   <nav>
     <div class="logo">TME</div>
     <ul>
+      <li><a href="index.html">Home</a></li>
       <li><a href="barcelona.html">Barcelona</a></li>
       <li><a href="athens.html">Athens</a></li>
       <li><a href="rome.html">Rome</a></li>
@@ -111,30 +73,38 @@
     </ul>
   </nav>
 
-  <section class="hero">
-    <h1>London</h1>
-    <div class="pin london"></div>
-  </section>
+  <h1>Explore London</h1>
+  <div id="map"></div>
 
-  <main>
-    <h2>Historic and Modern</h2>
-    <p>
-      Discover the Tower of London, Westminster Abbey, and Buckingham Palace alongside sleek skyscrapers like The Shard and vibrant modern art at the Tate.
-    </p>
+  <div class="content">
+    <p>The <strong>London Eye</strong> rises 135 metres above the River Thames,
+      providing panoramic views of the city’s landmarks—including Big Ben, the
+      Houses of Parliament, Buckingham Palace, The Shard and St Paul’s
+      Cathedral.</p>
 
-    <h2>Iconic Experiences</h2>
-    <p>
-      Ride the London Eye, enjoy afternoon tea, or stroll through Hyde Park. London's neighborhoods offer culture at every turn, from Camden Market to Notting Hill.
-    </p>
+    <p>The <strong>Tower of London</strong>, a former
+      royal residence, prison and treasury, now houses the Crown Jewels and
+      exhibitions on a thousand years of history. Nearby, the <strong>Tower Bridge</strong>
+      dazzles visitors with its iconic twin towers and high-level walkways.</p>
 
-    <h2>Global Flavors</h2>
-    <p>
-      From traditional British fare to world-class international cuisine, London’s food scene reflects its status as a global melting pot.
-    </p>
-  </main>
+    <p>Don’t miss <strong>Buckingham Palace</strong> and <strong>St Paul’s Cathedral</strong>—two of London's
+      most iconic cultural sites!</p>
+  </div>
 
-  <footer>
-    <p>© 2025 TME – Travel Made Easy. All rights reserved.</p>
-  </footer>
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <script>
+    const map = L.map('map').setView([51.5074, -0.1278], 12); // London coordinates
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '© OpenStreetMap',
+    }).addTo(map);
+
+    const marker = L.circleMarker([51.5074, -0.1278], {
+      radius: 10,
+      color: 'red',
+      fillColor: 'red',
+      fillOpacity: 0.8
+    }).addTo(map);
+  </script>
 </body>
 </html>

@@ -2,34 +2,61 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>TME – Athens</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Athens – TME</title>
   <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
   <style>
-    body { margin: 0; font-family: 'Roboto', sans-serif; background: #fff; color: #333; }
-    nav { display: flex; justify-content: space-between; align-items: center; padding: 1.2rem 2.5rem; background: #fff; box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05); }
-    .logo { font-family: 'Playfair Display', serif; font-size: 1.8rem; font-weight: bold; }
-    nav ul { list-style: none; display: flex; gap: 2rem; margin: 0; padding: 0; }
-    nav ul li a { text-decoration: none; color: #333; font-weight: 500; }
-
-    .hero {
-      position: relative;
-      height: 60vh;
-      background: url('images/athens-map.png') center/cover no-repeat;
+    body {
+      margin: 0;
+      font-family: 'Roboto', sans-serif;
+      background: #fff;
+      color: #333;
+    }
+    nav {
       display: flex;
+      justify-content: space-between;
       align-items: center;
-      justify-content: center;
+      padding: 1.2rem 2.5rem;
+      background: #fff;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
     }
-    .pin { position: absolute; width: 16px; height: 16px; background: red; border-radius: 50%; animation: pulse 2s infinite; top: 58%; left: 56%; }
-    @keyframes pulse {
-      0% { transform: scale(1); opacity: 1; }
-      50% { transform: scale(1.5); opacity: 0.5; }
-      100% { transform: scale(1); opacity: 1; }
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      font-weight: bold;
     }
-
-    .content { padding: 3rem 4rem; max-width: 800px; margin: auto; }
-    .content h1, .content h2 { font-family: 'Playfair Display', serif; }
-    .content p { line-height: 1.6; color: #555; }
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 2rem;
+      padding: 0;
+      margin: 0;
+    }
+    nav ul li a {
+      text-decoration: none;
+      color: #333;
+      font-weight: 500;
+    }
+    h1 {
+      font-family: 'Playfair Display', serif;
+      text-align: center;
+      margin: 2rem 0;
+      font-size: 2.5rem;
+    }
+    #map {
+      height: 450px;
+      width: 90%;
+      margin: 0 auto 2rem;
+      border-radius: 12px;
+    }
+    .content {
+      width: 80%;
+      margin: auto;
+      padding-bottom: 2rem;
+      line-height: 1.6;
+      font-size: 1.1rem;
+    }
   </style>
 </head>
 <body>
@@ -38,6 +65,7 @@
     <ul>
       <li><a href="index.html">Home</a></li>
       <li><a href="barcelona.html">Barcelona</a></li>
+      <li><a href="athens.html">Athens</a></li>
       <li><a href="rome.html">Rome</a></li>
       <li><a href="florence.html">Florence</a></li>
       <li><a href="milan.html">Milan</a></li>
@@ -45,17 +73,27 @@
     </ul>
   </nav>
 
-  <section class="hero">
-    <div class="pin"></div>
-  </section>
+  <h1>Explore Athens</h1>
+  <div id="map"></div>
 
-  <section class="content">
-    <h1>Athens</h1>
-    <h2>Ancient Wonders</h2>
-    <p>The Acropolis stands high above Athens, a symbol of democracy and ancient architecture. Visit the Parthenon and the new Acropolis Museum nearby.</p>
+  <div class="content">
+    <p>Step into the cradle of Western civilization with views of the Acropolis, Parthenon, and the ancient Agora amidst modern Greek life.</p>
+  </div>
 
-    <h2>Modern City Life</h2>
-    <p>Wander the streets of Plaka, try local souvlaki, and explore the Monastiraki flea market. Athens blends the old and new seamlessly.</p>
-  </section>
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <script>
+    const map = L.map('map').setView([37.9838, 23.7275], 12);
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '© OpenStreetMap',
+    }).addTo(map);
+
+    const marker = L.circleMarker([37.9838, 23.7275], {
+      radius: 10,
+      color: 'red',
+      fillColor: 'red',
+      fillOpacity: 0.8
+    }).addTo(map);
+  </script>
 </body>
 </html>

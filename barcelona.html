@@ -1,13 +1,12 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>TME – Barcelona</title>
+  <title>Barcelona – TME</title>
   <link rel="stylesheet" href="css/style.css" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
   <style>
     body {
       margin: 0;
@@ -20,7 +19,7 @@
       justify-content: space-between;
       align-items: center;
       padding: 1.2rem 2.5rem;
-      background-color: #fff;
+      background: #fff;
       box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
     }
     .logo {
@@ -40,63 +39,24 @@
       color: #333;
       font-weight: 500;
     }
-    .hero {
-      position: relative;
-      height: 75vh;
-      background: url('images/map-barcelona.png') center/cover no-repeat;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-    }
-    .pin {
-      position: absolute;
-      width: 16px;
-      height: 16px;
-      background: red;
-      border-radius: 50%;
-      animation: pulse 2s infinite;
-    }
-    .pin.barcelona {
-      top: 55%;
-      left: 42%;
-    }
-    @keyframes pulse {
-      0% { transform: scale(1); opacity: 1; }
-      50% { transform: scale(1.5); opacity: 0.5; }
-      100% { transform: scale(1); opacity: 1; }
-    }
-    .hero h1 {
+    h1 {
       font-family: 'Playfair Display', serif;
-      font-size: 3rem;
-      background: rgba(0, 0, 0, 0.5);
-      color: white;
-      padding: 1rem 2rem;
-      border-radius: 8px;
-      z-index: 2;
+      text-align: center;
+      margin: 2rem 0;
+      font-size: 2.5rem;
     }
-    main {
-      padding: 2.5rem 3rem;
-      max-width: 800px;
+    #map {
+      height: 450px;
+      width: 90%;
+      margin: 0 auto 2rem;
+      border-radius: 12px;
+    }
+    .content {
+      width: 80%;
       margin: auto;
-    }
-    main h2 {
-      font-family: 'Playfair Display', serif;
-      font-size: 2rem;
-      margin-top: 2rem;
-    }
-    main p {
-      font-size: 1.05rem;
+      padding-bottom: 2rem;
       line-height: 1.6;
-      color: #444;
-    }
-    footer {
-      text-align: center;
-      padding: 1.5rem;
-      font-size: 0.9rem;
-      background: #fafafa;
-      color: #666;
-      margin-top: 4rem;
+      font-size: 1.1rem;
     }
   </style>
 </head>
@@ -114,24 +74,27 @@
     </ul>
   </nav>
 
-  <section class="hero">
-    <h1>Barcelona</h1>
-    <div class="pin barcelona"></div>
-  </section>
+  <h1>Explore Barcelona</h1>
+  <div id="map"></div>
 
-  <main>
-    <h2>Art & Architecture</h2>
-    <p>Barcelona is famed for the imaginative architecture of Antoni Gaudí. Explore the surreal Sagrada Familia, a basilica over a century in the making, and the colorful mosaics of Park Güell.</p>
+  <div class="content">
+    <p>Discover Gaudí’s breathtaking architecture, from the Sagrada Família to Park Güell. Enjoy sun-soaked beaches and the buzz of La Rambla.</p>
+  </div>
 
-    <h2>Beaches & Boulevards</h2>
-    <p>From the bustling La Rambla to the laid-back Barceloneta beach, Barcelona offers vibrant street life, tapas bars, and stunning sea views. It’s a city of energy, sunlight, and spirit.</p>
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <script>
+    const map = L.map('map').setView([41.3851, 2.1734], 12);
 
-    <h2>Culture & Catalonia</h2>
-    <p>Visit the Gothic Quarter, Picasso Museum, and catch a flamenco show or a Barça football match. Barcelona celebrates its Catalan heritage with pride and color at every turn.</p>
-  </main>
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '© OpenStreetMap',
+    }).addTo(map);
 
-  <footer>
-    <p>© 2025 TME – Travel Made Easy. All rights reserved.</p>
-  </footer>
+    const marker = L.circleMarker([41.3851, 2.1734], {
+      radius: 10,
+      color: 'red',
+      fillColor: 'red',
+      fillOpacity: 0.8
+    }).addTo(map);
+  </script>
 </body>
 </html>
