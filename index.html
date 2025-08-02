@@ -1,19 +1,18 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>TME – Travel Made Easy</title>
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
   <link rel="stylesheet" href="css/style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
   <style>
     body {
       margin: 0;
       font-family: 'Roboto', sans-serif;
       background: #fff;
       color: #333;
+      scroll-behavior: smooth;
     }
     nav {
       display: flex;
@@ -24,12 +23,13 @@
       box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
       position: sticky;
       top: 0;
-      z-index: 999;
+      z-index: 1000;
     }
     .logo {
       font-family: 'Playfair Display', serif;
       font-size: 1.8rem;
       font-weight: bold;
+      color: #ff5a5f;
     }
     nav ul {
       list-style: none;
@@ -42,15 +42,58 @@
       text-decoration: none;
       color: #333;
       font-weight: 500;
+      transition: color 0.3s;
     }
-    #map {
-      height: 80vh;
-      width: 100%;
+    nav ul li a:hover {
+      color: #ff5a5f;
     }
-    .leaflet-popup-content-wrapper {
+    .hero {
+      position: relative;
+      height: 90vh;
+      background: url('images/hero-map.png') center/cover no-repeat;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 3.5rem;
+      background: rgba(0, 0, 0, 0.6);
+      color: white;
+      padding: 1rem 2rem;
+      border-radius: 10px;
+      z-index: 1;
+    }
+    .pin {
+      position: absolute;
+      width: 18px;
+      height: 18px;
+      background: red;
+      border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
+    .pin.barcelona { top: 58%; left: 26%; }
+    .pin.athens { top: 68%; left: 54%; }
+    .pin.rome { top: 60%; left: 44%; }
+    .pin.florence { top: 57%; left: 45%; }
+    .pin.milan { top: 52%; left: 44%; }
+    .pin.london { top: 45%; left: 30%; }
+    @keyframes pulse {
+      0% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.6); opacity: 0.5; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 2.5rem;
+      margin-top: 4rem;
+      margin-bottom: 2rem;
       font-family: 'Playfair Display', serif;
     }
-    .card-grid {
+
+    .grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
       gap: 2rem;
@@ -58,10 +101,12 @@
     }
     .card {
       background: #fafafa;
-      border-radius: 10px;
+      border-radius: 12px;
       overflow: hidden;
-      box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.08);
       transition: transform 0.3s ease;
+      text-decoration: none;
+      color: inherit;
     }
     .card:hover {
       transform: translateY(-6px);
@@ -76,13 +121,23 @@
     }
     .card-content h2 {
       font-family: 'Playfair Display', serif;
-      font-size: 1.5rem;
+      font-size: 1.4rem;
       margin-bottom: 0.5rem;
+      color: #ff5a5f;
     }
     .card-content p {
       font-size: 1rem;
       color: #555;
       line-height: 1.5;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem;
+      background: #f5f5f5;
+      font-size: 0.9rem;
+      color: #777;
+      margin-top: 3rem;
     }
   </style>
 </head>
@@ -99,46 +154,64 @@
     </ul>
   </nav>
 
-  <div id="map"></div>
+  <section class="hero">
+    <h1>Travel Made Easy</h1>
+    <div class="pin barcelona"></div>
+    <div class="pin athens"></div>
+    <div class="pin rome"></div>
+    <div class="pin florence"></div>
+    <div class="pin milan"></div>
+    <div class="pin london"></div>
+  </section>
 
-  <div class="card-grid">
-    <div class="card">
+  <h2 class="section-title">Featured Cities</h2>
+  <div class="grid">
+    <a href="barcelona.html" class="card">
       <img src="images/barcelona.png" alt="Barcelona" />
       <div class="card-content">
-        <h2><a href="barcelona.html">Barcelona</a></h2>
-        <p>Explore Gaudí's wonders and the charm of Catalonia.</p>
+        <h2>Barcelona</h2>
+        <p>Explore the stunning architecture of Antoni Gaudí, from the Sagrada Familia to Park Güell.</p>
       </div>
-    </div>
-    <div class="card">
+    </a>
+    <a href="athens.html" class="card">
+      <img src="images/athens.png" alt="Athens" />
+      <div class="card-content">
+        <h2>Athens</h2>
+        <p>Walk among the ruins of ancient Greece and soak up views from the Acropolis to the sea.</p>
+      </div>
+    </a>
+    <a href="rome.html" class="card">
+      <img src="images/rome.png" alt="Rome" />
+      <div class="card-content">
+        <h2>Rome</h2>
+        <p>Feel history come alive as you tour the Colosseum, Vatican City, and Rome’s cobbled alleys.</p>
+      </div>
+    </a>
+    <a href="florence.html" class="card">
+      <img src="images/florence.png" alt="Florence" />
+      <div class="card-content">
+        <h2>Florence</h2>
+        <p>Admire Renaissance art and architecture, from the Uffizi to the iconic Duomo cathedral.</p>
+      </div>
+    </a>
+    <a href="milan.html" class="card">
+      <img src="images/milan.png" alt="Milan" />
+      <div class="card-content">
+        <h2>Milan</h2>
+        <p>Shop fashion, tour the Last Supper, and admire gothic spires at the Milan Cathedral.</p>
+      </div>
+    </a>
+    <a href="london.html" class="card">
       <img src="images/london.png" alt="London" />
       <div class="card-content">
-        <h2><a href="london.html">London</a></h2>
-        <p>Culture, royalty, and iconic views from the Thames.</p>
+        <h2>London</h2>
+        <p>From the London Eye to Buckingham Palace, dive into England’s capital of culture.</p>
       </div>
-    </div>
-    <!-- Add more cities as needed -->
+    </a>
   </div>
 
-  <script>
-    var map = L.map('map').setView([50, 10], 4);
-
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      attribution: '© OpenStreetMap contributors'
-    }).addTo(map);
-
-    const cities = [
-      { name: "London", coords: [51.5074, -0.1278], page: "london.html" },
-      { name: "Rome", coords: [41.9028, 12.4964], page: "rome.html" },
-      { name: "Barcelona", coords: [41.3851, 2.1734], page: "barcelona.html" },
-      { name: "Athens", coords: [37.9838, 23.7275], page: "athens.html" },
-      { name: "Florence", coords: [43.7696, 11.2558], page: "florence.html" },
-      { name: "Milan", coords: [45.4642, 9.19], page: "milan.html" }
-    ];
-
-    cities.forEach(city => {
-      L.marker(city.coords).addTo(map)
-        .bindPopup(`<a href="${city.page}" style="text-decoration:none;color:#e63946;"><strong>${city.name}</strong></a>`);
-    });
-  </script>
+  <footer>
+    © 2025 TME – Travel Made Easy. All rights reserved.
+  </footer>
 </body>
 </html>
