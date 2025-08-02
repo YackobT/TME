@@ -1,63 +1,13 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Milan – TME</title>
   <link rel="stylesheet" href="css/style.css" />
   <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
   <style>
-    body {
-      margin: 0;
-      font-family: 'Roboto', sans-serif;
-      background: #fff;
-      color: #333;
-    }
-    nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1.2rem 2.5rem;
-      background: #fff;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
-    }
-    .logo {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.8rem;
-      font-weight: bold;
-    }
-    nav ul {
-      list-style: none;
-      display: flex;
-      gap: 2rem;
-      padding: 0;
-      margin: 0;
-    }
-    nav ul li a {
-      text-decoration: none;
-      color: #333;
-      font-weight: 500;
-    }
-    h1 {
-      font-family: 'Playfair Display', serif;
-      text-align: center;
-      margin: 2rem 0;
-      font-size: 2.5rem;
-    }
-    #map {
-      height: 450px;
-      width: 90%;
-      margin: 0 auto 2rem;
-      border-radius: 12px;
-    }
-    .content {
-      width: 80%;
-      margin: auto;
-      padding-bottom: 2rem;
-      line-height: 1.6;
-      font-size: 1.1rem;
-    }
+    #map { height: 400px; margin: 2rem 0; }
   </style>
 </head>
 <body>
@@ -65,36 +15,43 @@
     <div class="logo">TME</div>
     <ul>
       <li><a href="index.html">Home</a></li>
-      <li><a href="barcelona.html">Barcelona</a></li>
-      <li><a href="athens.html">Athens</a></li>
-      <li><a href="rome.html">Rome</a></li>
-      <li><a href="florence.html">Florence</a></li>
-      <li><a href="milan.html">Milan</a></li>
-      <li><a href="london.html">London</a></li>
     </ul>
   </nav>
 
-  <h1>Explore Milan</h1>
+  <header>
+    <h1>Milan – Fashion & Culture Capital</h1>
+    <p>Where modern fashion meets timeless heritage and art.</p>
+  </header>
+
   <div id="map"></div>
 
-  <div class="content">
-    <p>Italy’s fashion capital dazzles with the Gothic Duomo, La Scala opera house, and Leonardo da Vinci’s Last Supper.</p>
-  </div>
+  <section>
+    <h2>Top 5 Must-See Places</h2>
+    <ul>
+      <li><strong>Duomo di Milano</strong> – Breathtaking Gothic cathedral and rooftop views.</li>
+      <li><strong>Sforzesco Castle</strong> – A Renaissance fortress with museums.</li>
+      <li><strong>The Last Supper</strong> – Leonardo da Vinci’s masterpiece (reservation needed).</li>
+      <li><strong>Galleria Vittorio Emanuele II</strong> – Elegant 19th-century shopping arcade.</li>
+      <li><strong>Brera Art Gallery</strong> – Italian masterpieces and a charming neighborhood.</li>
+    </ul>
+  </section>
 
   <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
   <script>
-    const map = L.map('map').setView([45.4642, 9.19], 12);
-
+    const map = L.map('map').setView([45.4642, 9.19], 13);
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      attribution: '© OpenStreetMap',
+      attribution: '© OpenStreetMap'
     }).addTo(map);
-
-    const marker = L.circleMarker([45.4642, 9.19], {
-      radius: 10,
-      color: 'red',
-      fillColor: 'red',
-      fillOpacity: 0.8
-    }).addTo(map);
+    const locations = [
+      { name: "Duomo di Milano", lat: 45.4642, lon: 9.1916 },
+      { name: "Sforzesco Castle", lat: 45.4700, lon: 9.1792 },
+      { name: "The Last Supper", lat: 45.4656, lon: 9.1708 },
+      { name: "Galleria Vittorio Emanuele II", lat: 45.4663, lon: 9.1895 },
+      { name: "Brera Art Gallery", lat: 45.4716, lon: 9.1875 }
+    ];
+    locations.forEach(loc => {
+      L.marker([loc.lat, loc.lon]).addTo(map).bindPopup(loc.name);
+    });
   </script>
 </body>
 </html>

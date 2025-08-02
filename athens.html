@@ -2,61 +2,12 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Athens – TME</title>
   <link rel="stylesheet" href="css/style.css" />
-  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"></script>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" />
   <style>
-    body {
-      margin: 0;
-      font-family: 'Roboto', sans-serif;
-      background: #fff;
-      color: #333;
-    }
-    nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1.2rem 2.5rem;
-      background: #fff;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
-    }
-    .logo {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.8rem;
-      font-weight: bold;
-    }
-    nav ul {
-      list-style: none;
-      display: flex;
-      gap: 2rem;
-      padding: 0;
-      margin: 0;
-    }
-    nav ul li a {
-      text-decoration: none;
-      color: #333;
-      font-weight: 500;
-    }
-    h1 {
-      font-family: 'Playfair Display', serif;
-      text-align: center;
-      margin: 2rem 0;
-      font-size: 2.5rem;
-    }
-    #map {
-      height: 450px;
-      width: 90%;
-      margin: 0 auto 2rem;
-      border-radius: 12px;
-    }
-    .content {
-      width: 80%;
-      margin: auto;
-      padding-bottom: 2rem;
-      line-height: 1.6;
-      font-size: 1.1rem;
-    }
+    #map { height: 400px; margin: 2rem 0; border-radius: 10px; }
   </style>
 </head>
 <body>
@@ -64,36 +15,36 @@
     <div class="logo">TME</div>
     <ul>
       <li><a href="index.html">Home</a></li>
-      <li><a href="barcelona.html">Barcelona</a></li>
-      <li><a href="athens.html">Athens</a></li>
-      <li><a href="rome.html">Rome</a></li>
-      <li><a href="florence.html">Florence</a></li>
-      <li><a href="milan.html">Milan</a></li>
-      <li><a href="london.html">London</a></li>
     </ul>
   </nav>
 
-  <h1>Explore Athens</h1>
-  <div id="map"></div>
+  <section class="content">
+    <h1>Athens Must-Sees</h1>
+    <div id="map"></div>
+    <ul>
+      <li>Acropolis of Athens</li>
+      <li>Plaka Neighborhood</li>
+      <li>Temple of Olympian Zeus</li>
+      <li>Mount Lycabettus</li>
+      <li>National Archaeological Museum</li>
+    </ul>
+  </section>
 
-  <div class="content">
-    <p>Step into the cradle of Western civilization with views of the Acropolis, Parthenon, and the ancient Agora amidst modern Greek life.</p>
-  </div>
-
-  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
   <script>
-    const map = L.map('map').setView([37.9838, 23.7275], 12);
+    const map = L.map('map').setView([37.9838, 23.7275], 13);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
 
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      attribution: '© OpenStreetMap',
-    }).addTo(map);
+    const locations = [
+      ["Acropolis", 37.9715, 23.7267],
+      ["Plaka", 37.9730, 23.7305],
+      ["Temple of Olympian Zeus", 37.9699, 23.7324],
+      ["Mount Lycabettus", 37.9839, 23.7430],
+      ["Archaeological Museum", 37.9890, 23.7314]
+    ];
 
-    const marker = L.circleMarker([37.9838, 23.7275], {
-      radius: 10,
-      color: 'red',
-      fillColor: 'red',
-      fillOpacity: 0.8
-    }).addTo(map);
+    locations.forEach(([name, lat, lng]) => {
+      L.marker([lat, lng]).addTo(map).bindPopup(name);
+    });
   </script>
 </body>
 </html>

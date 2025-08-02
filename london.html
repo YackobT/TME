@@ -2,61 +2,12 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>London – TME</title>
   <link rel="stylesheet" href="css/style.css" />
   <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
   <style>
-    body {
-      margin: 0;
-      font-family: 'Roboto', sans-serif;
-      background: #fff;
-      color: #333;
-    }
-    nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1.2rem 2.5rem;
-      background: #fff;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
-    }
-    .logo {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.8rem;
-      font-weight: bold;
-    }
-    nav ul {
-      list-style: none;
-      display: flex;
-      gap: 2rem;
-      padding: 0;
-      margin: 0;
-    }
-    nav ul li a {
-      text-decoration: none;
-      color: #333;
-      font-weight: 500;
-    }
-    h1 {
-      font-family: 'Playfair Display', serif;
-      text-align: center;
-      margin: 2rem 0;
-      font-size: 2.5rem;
-    }
-    #map {
-      height: 450px;
-      width: 90%;
-      margin: 0 auto 2rem;
-      border-radius: 12px;
-    }
-    .content {
-      width: 80%;
-      margin: auto;
-      padding-bottom: 2rem;
-      line-height: 1.6;
-      font-size: 1.1rem;
-    }
+    #map { height: 400px; margin: 2rem 0; }
   </style>
 </head>
 <body>
@@ -64,47 +15,43 @@
     <div class="logo">TME</div>
     <ul>
       <li><a href="index.html">Home</a></li>
-      <li><a href="barcelona.html">Barcelona</a></li>
-      <li><a href="athens.html">Athens</a></li>
-      <li><a href="rome.html">Rome</a></li>
-      <li><a href="florence.html">Florence</a></li>
-      <li><a href="milan.html">Milan</a></li>
-      <li><a href="london.html">London</a></li>
     </ul>
   </nav>
 
-  <h1>Explore London</h1>
+  <header>
+    <h1>London – England’s Iconic Capital</h1>
+    <p>Experience the blend of royal heritage and modern marvels.</p>
+  </header>
+
   <div id="map"></div>
 
-  <div class="content">
-    <p>The <strong>London Eye</strong> rises 135 metres above the River Thames,
-      providing panoramic views of the city’s landmarks—including Big Ben, the
-      Houses of Parliament, Buckingham Palace, The Shard and St Paul’s
-      Cathedral.</p>
-
-    <p>The <strong>Tower of London</strong>, a former
-      royal residence, prison and treasury, now houses the Crown Jewels and
-      exhibitions on a thousand years of history. Nearby, the <strong>Tower Bridge</strong>
-      dazzles visitors with its iconic twin towers and high-level walkways.</p>
-
-    <p>Don’t miss <strong>Buckingham Palace</strong> and <strong>St Paul’s Cathedral</strong>—two of London's
-      most iconic cultural sites!</p>
-  </div>
+  <section>
+    <h2>Top 5 Must-See Places</h2>
+    <ul>
+      <li><strong>Big Ben & Houses of Parliament</strong> – Iconic landmarks of British democracy.</li>
+      <li><strong>London Eye</strong> – Giant observation wheel with panoramic city views.</li>
+      <li><strong>Buckingham Palace</strong> – The Queen’s official London residence.</li>
+      <li><strong>Tower Bridge & Tower of London</strong> – A historic fortress and suspension bridge.</li>
+      <li><strong>St. Paul’s Cathedral</strong> – A majestic cathedral with a climbable dome.</li>
+    </ul>
+  </section>
 
   <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
   <script>
-    const map = L.map('map').setView([51.5074, -0.1278], 12); // London coordinates
-
+    const map = L.map('map').setView([51.5074, -0.1278], 13);
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      attribution: '© OpenStreetMap',
+      attribution: '© OpenStreetMap'
     }).addTo(map);
-
-    const marker = L.circleMarker([51.5074, -0.1278], {
-      radius: 10,
-      color: 'red',
-      fillColor: 'red',
-      fillOpacity: 0.8
-    }).addTo(map);
+    const locations = [
+      { name: "Big Ben", lat: 51.5007, lon: -0.1246 },
+      { name: "London Eye", lat: 51.5033, lon: -0.1195 },
+      { name: "Buckingham Palace", lat: 51.5014, lon: -0.1419 },
+      { name: "Tower Bridge", lat: 51.5055, lon: -0.0754 },
+      { name: "St. Paul's Cathedral", lat: 51.5138, lon: -0.0984 }
+    ];
+    locations.forEach(loc => {
+      L.marker([loc.lat, loc.lon]).addTo(map).bindPopup(loc.name);
+    });
   </script>
 </body>
 </html>

@@ -1,63 +1,15 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Barcelona – TME</title>
   <link rel="stylesheet" href="css/style.css" />
   <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
   <style>
-    body {
-      margin: 0;
-      font-family: 'Roboto', sans-serif;
-      background: #fff;
-      color: #333;
-    }
-    nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1.2rem 2.5rem;
-      background: #fff;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
-    }
-    .logo {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.8rem;
-      font-weight: bold;
-    }
-    nav ul {
-      list-style: none;
-      display: flex;
-      gap: 2rem;
-      padding: 0;
-      margin: 0;
-    }
-    nav ul li a {
-      text-decoration: none;
-      color: #333;
-      font-weight: 500;
-    }
-    h1 {
-      font-family: 'Playfair Display', serif;
-      text-align: center;
-      margin: 2rem 0;
-      font-size: 2.5rem;
-    }
-    #map {
-      height: 450px;
-      width: 90%;
-      margin: 0 auto 2rem;
-      border-radius: 12px;
-    }
-    .content {
-      width: 80%;
-      margin: auto;
-      padding-bottom: 2rem;
-      line-height: 1.6;
-      font-size: 1.1rem;
-    }
+    #map { height: 400px; margin: 2rem 0; }
+    .content { padding: 2rem 3rem; max-width: 1000px; margin: auto; }
+    h1 { font-family: 'Playfair Display', serif; }
+    .location { margin-bottom: 2rem; }
   </style>
 </head>
 <body>
@@ -65,36 +17,34 @@
     <div class="logo">TME</div>
     <ul>
       <li><a href="index.html">Home</a></li>
-      <li><a href="barcelona.html">Barcelona</a></li>
-      <li><a href="athens.html">Athens</a></li>
-      <li><a href="rome.html">Rome</a></li>
-      <li><a href="florence.html">Florence</a></li>
-      <li><a href="milan.html">Milan</a></li>
-      <li><a href="london.html">London</a></li>
     </ul>
   </nav>
 
-  <h1>Explore Barcelona</h1>
-  <div id="map"></div>
-
   <div class="content">
-    <p>Discover Gaudí’s breathtaking architecture, from the Sagrada Família to Park Güell. Enjoy sun-soaked beaches and the buzz of La Rambla.</p>
+    <h1>Barcelona Must-See Spots</h1>
+    <div id="map"></div>
+
+    <div class="location"><h2>Sagrada Família</h2><p>Gaudí’s masterpiece with breathtaking architecture and stained glass.</p></div>
+    <div class="location"><h2>Park Güell</h2><p>Colorful mosaic-covered park with whimsical designs and city views.</p></div>
+    <div class="location"><h2>Gothic Quarter</h2><p>Wander narrow medieval streets and explore old cathedrals and cafes.</p></div>
+    <div class="location"><h2>Casa Batlló</h2><p>A surreal Gaudí house with dragon-like rooftop and artistic facade.</p></div>
+    <div class="location"><h2>Barceloneta Beach</h2><p>Relax or bike along the city’s iconic seaside neighborhood.</p></div>
   </div>
 
   <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
   <script>
-    const map = L.map('map').setView([41.3851, 2.1734], 12);
-
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      attribution: '© OpenStreetMap',
-    }).addTo(map);
-
-    const marker = L.circleMarker([41.3851, 2.1734], {
-      radius: 10,
-      color: 'red',
-      fillColor: 'red',
-      fillOpacity: 0.8
-    }).addTo(map);
+    const map = L.map('map').setView([41.3851, 2.1734], 13);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
+    const spots = [
+      ["Sagrada Família", 41.4036, 2.1744],
+      ["Park Güell", 41.4145, 2.1527],
+      ["Gothic Quarter", 41.3839, 2.1762],
+      ["Casa Batlló", 41.3916, 2.1649],
+      ["Barceloneta Beach", 41.3764, 2.1920],
+    ];
+    spots.forEach(([name, lat, lng]) => {
+      L.marker([lat, lng]).addTo(map).bindPopup(name);
+    });
   </script>
 </body>
 </html>
